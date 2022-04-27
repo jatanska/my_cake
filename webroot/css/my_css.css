@@ -1,0 +1,93 @@
+/* Miligram overrides */
+body {
+    background-color: #f8f8f8;
+}
+a{ text-decoration: none; }
+.top-bar-section li a {
+    color: #fff;
+	font-size:18px;
+}
+.right-wrap{
+display:block;height:auto;margin:0 auto;
+max-width:1100px; padding-right:20px; 
+}
+.my_logo{
+	display:inline-block;
+	float:left;
+	margin-bottom: 0px;
+}
+img{ margin-bottom: 0px !important; }
+.right{
+	padding-top:20px;
+	display:block;
+	float:right;
+	max-width:1000px;
+}
+.product{ display: inline-block; float: left; min-width:160px; background-color: #fff; padding:20px; min-height:400px; }
+.product h2{ font-size:24px; color: #222; text-transform:uppercase; }
+.time{ font-size:12px; color:#666; }
+.basic-button{display: inline-block;position:relative;line-height:150%;width:100%!important;min-width:122px!important;background-color:#fff!important;font-size:12px;color:#000!important;max-width:60px; padding:10px; cursor:pointer; text-align:center; border: 1px solid #ddd !important; border-radius:4px; }.basic-button:focus,.basic-button:hover{background-color:#eee!important;border: 1px solid #ddd !important;color:#000!important}
+ul{   
+list-style-type: none;
+  margin: 0 0 0 0 !important;
+}
+.right ul{   
+list-style-type: none;
+  margin: 0 0 0 0 !important;
+  padding-left: 25px;}
+.right li{display: inline-block; padding-left:20px;}
+.top-bar{
+	background-color:#000; color:#fff; position:fixed; top:0px; left:0px; width:100%; z-index:3;	
+	}
+	.top-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 112rem;
+  padding: 2rem;
+  margin: 0 auto 2rem;
+  background-color:#000; color:#fff; 
+}
+	.top-bar-section li a{ color: #fff; }
+	.top-nav {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		max-width: 112rem;
+		padding: 2rem;
+		margin: 0 auto 2rem;
+		background-color: #000;
+		color: #fff;
+	}
+.footer{display:block;height:auto;margin:0 auto}
+.footer{padding-top:20px; padding-bottom:20px;}
+.footer{ color: #333;
+padding-top: 0px;
+padding-bottom: 70px;
+margin-top: 40px;}
+.footer{max-width:1100px}
+@media screen and (max-width: 640px) {
+.product{ margin-top:20px; }	
+	.footer{padding-left:20px; padding-right:20px;}
+	.footer .row{padding-left:20px; padding-right:20px;}
+	.column{padding-top:20px !important; padding-bottom:20px;}
+    .top-nav {
+        margin: 0 auto;
+    }
+    .side-nav {
+        margin-bottom: 1rem;
+    }
+    .heading {
+        margin-bottom: 1rem;
+    }
+    .side-nav-item {
+        display: inline;
+        margin: 0 1.5rem 0 0;
+    }
+    .asc:after {
+        content: " \2192";
+    }
+    .desc:after {
+        content: " \2190";
+    }
+}

@@ -1,0 +1,10 @@
+@charset "utf-8";
+/* CSS Document */
+
+.my-shoppincart{ color: #000; font-size:16px; }
+.cart-info tbody td {
+    color: #222;
+    font-size: 16px;
+    vertical-align: middle;
+}
+.close_basket{ display: block; border:1 px solid #000; color: #000; cursor:pointer; float: right; }
