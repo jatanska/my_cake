@@ -41,12 +41,6 @@ $checkConnection = function (string $name) {
     return compact('connected', 'error');
 };
 
-if (!Configure::read('debug')) :
-    throw new NotFoundException(
-        'Please replace templates/Pages/home.php with your own version or re-enable debug mode.'
-    );
-endif;
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -66,7 +60,7 @@ endif;
 	<title>Simple shop</title>
     <?= $this->Html->meta('icon') ?>
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
-    <?= $this->Html->css(['normalize.min', 'milligram.min', 'cake', 'home', 'my_css', 'firstpage', 'basket', 'search']) ?>
+    <?= $this->Html->css(['normalize.min', 'milligram.min', 'cake', 'home', 'my_css', 'firstpage', 'basket', 'search', 'sort']) ?>
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>     
@@ -128,71 +122,14 @@ endif;
                 <div class="row">
                     <div class="column">
 						<h1>Simple Shop</h1>
-                        <div class="main-sites-search">
-                        <div style="display: inline-block; width: 100%; padding: 20px; font-size:18x;">
-                        <form method="post" action="#" autocomplete="off" class="search-form">
-                        <label for="search-main-q" style="display: none;">Search product</label>
-                        <input type="text" class="search_input" name="search-main-q" size="44" maxlength="255" id="search-main-q" onKeyUp="javascript:autosuggest()" placeholder="Search product..." />
-                        <!-- Here we can close the search: <span id="search-close" title="Close">Close</span>-->
-                        </form>
-                        </div>
-                        </div>
-                        <div id="results2"><div id="results" style="z-index: 2;"></div></div>
+                       <?php require_once "search-box.php"; ?> 
                     </div>
                 </div>
+				<?php require_once "../config/connect.php"; ?>                
+				<?php require_once "sort.php"; ?>
                 <div class="row">
-                <?php require_once "../config/connect.php"; ?>
-
-                <?php 	
-				//Get articles
-				$getarticles_sql = "SELECT * FROM articles ORDER BY id DESC LIMIT 10"; 
-				$get_card = mysqli_query($connect,$getarticles_sql);	
-				echo "<div class='article-wrap'>";
-				while($card_row = mysqli_fetch_assoc($get_card)){
-				$this_article_id = $card_row['id'];	
-				$title = $card_row['title'];			
-				if (strlen($title) > 30){ $title = substr($title, 0, 30) . "..."; }
-				$this_body = $card_row['body'];	
-				$this_slug = $card_row['slug'];	
-				$this_price = $card_row['price'];
-				$this_image = $card_row['image'];	
-				echo "
-				<div class='col-md-4'>
-				<div class='article-card'>
-				<div class='product'>
-				<form>
-					<a href='articles/view/".$this_slug."' title='".$title."'><img src='webroot/".$this_image."' alt='".$title."' /></a>
-					<a href='articles/view/".$this_slug."' title='".$title."'><h2>".$title."</h2></a>
-					<div class='product-content'>
-						<p>".$this_body."</p>
-						<p>€".$this_price.".00</p>";
-						//Get tags
-							$gettags_sql = "SELECT tag_id FROM articles_tags WHERE article_id = ".$this_article_id.""; 
-							$get_tag = mysqli_query($connect,$gettags_sql);	
-							while($get_tag_row = mysqli_fetch_assoc($get_tag)){
-							$tag_id = $get_tag_row['tag_id'];	
-							//Get tag name
-								$gettagname_sql = "SELECT title FROM tags WHERE id = ".$tag_id.""; 
-								$gettagname_q = mysqli_query($connect,$gettagname_sql);	
-								while($gettagname_row = mysqli_fetch_assoc($gettagname_q)){
-								$tag_title = $gettagname_row['title'];	
-									echo "<p>Tag: <a href='articles/tagged/".$tag_title."' title='".$tag_title."'>".$tag_title."</a></p>";
-								}
-							}
-					echo"</div>"; ?>
-			<button type="button" id="<?php echo "".$this_article_id.""; ?>" value="<?php echo "".$this_article_id.""; ?>" class="btnAddAction cart-action" onclick="showBasket(this.value)" />Add to cart</button>
-</form>
-<br>
-            <?php
-				echo "</form>";	
-				echo "</div>
-				</div>
-                </div>";
-				}
-				echo "</div>";
-				?>
-                </div>
-                
+ 				<?php require_once "get-articles.php"; ?>               
+                </div>                
             </div>
         </div>
     </main>

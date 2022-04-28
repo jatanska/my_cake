@@ -18,7 +18,7 @@ TUESDAY - SATURDAY: 12pm - 11pm<br />
 SUNDAY: CLOSED
                     </div>
                 </div>
-</footer>>
+</footer>
 <script>
 <!-- SEARCH -->
 $("#search-close").hide();

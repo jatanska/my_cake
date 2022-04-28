@@ -1,0 +1,7 @@
+@charset "utf-8";
+/* CSS Document */
+
+.sites-select{ display: block; float: left; width:100%; text-align:right; }
+.orderby_sites{ display: inline-block; max-width:120px; padding:10px; border:1px solid #ccc; border-radius:4px; background-color: #fff; -webkit-appearance: none;-moz-appearance: none; appearance: none; height: auto !important; font-size: 12px; margin-bottom:10px; }
+.orderby_sites:hover{ border:1px solid #ccc; border-radius:4px; }
+.orderby_sites:focus{ border:1px solid #ccc; border-radius:4px; }
