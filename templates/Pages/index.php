@@ -133,7 +133,7 @@ endif;
                         <form method="post" action="#" autocomplete="off" class="search-form">
                         <label for="search-main-q" style="display: none;">Search product</label>
                         <input type="text" class="search_input" name="search-main-q" size="44" maxlength="255" id="search-main-q" onKeyUp="javascript:autosuggest()" placeholder="Search product..." />
-                        <!-- <span id="search-close" title="Close">Close</span>-->
+                        <!-- Here we can close the search: <span id="search-close" title="Close">Close</span>-->
                         </form>
                         </div>
                         </div>
