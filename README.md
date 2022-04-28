@@ -51,3 +51,50 @@ Other environment agnostic settings can be changed in `config/app.php`.
 The app skeleton uses [Milligram](https://milligram.io/) (v1.3) minimalist CSS
 framework by default. You can, however, replace it with any other library or
 custom styles.
+
+## SQL
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    created DATETIME,
+    modified DATETIME
+);
+
+CREATE TABLE articles (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    slug VARCHAR(191) NOT NULL,
+    body TEXT,
+    published BOOLEAN DEFAULT FALSE,
+    created DATETIME,
+    modified DATETIME,
+    price float NOT NULL,
+    image VARCHAR(250) NOT NULL,
+    UNIQUE KEY (slug),
+    FOREIGN KEY user_key (user_id) REFERENCES users(id)
+) CHARSET=utf8mb4;
+
+CREATE TABLE tags (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(191),
+    created DATETIME,
+    modified DATETIME,
+    UNIQUE KEY (title)
+) CHARSET=utf8mb4;
+
+CREATE TABLE articles_tags (
+    article_id INT NOT NULL,
+    tag_id INT NOT NULL,
+    PRIMARY KEY (article_id, tag_id),
+    FOREIGN KEY tag_key(tag_id) REFERENCES tags(id),
+    FOREIGN KEY article_key(article_id) REFERENCES articles(id)
+);
+
+INSERT INTO users (email, password, created, modified) VALUES (‘jarto.tanskanen@gmail.com', '$2y$10$cp3LKV2qYsyP25TBRL2/oOuJHCZmLxqT.tERKXUIQdSfHYPm2Sf7i', NOW(), NOW());
+INSERT INTO articles (user_id, title, slug, body, published, created, modified, price, image) VALUES (1, Nord45 XXL', 'first-post', Viimeisin Nord-malli', 1, NOW(), NOW()),200, ’/img/s4.jpg’);
+INSERT INTO articles (user_id, title, slug, body, published, created, modified, price, image) VALUES (1, 'Samsung G77', 'second-post', 'Upea Samsung Galaxy 7', 1, NOW(), NOW()),100, ’/img/note3.jpg’);
+INSERT INTO articles (user_id, title, slug, body, published, created, modified, price, image) VALUES (1, 'Nokia 5G S11', 'third-post', 'Nokian viimeisin malli', 1, NOW(), NOW()),300, ’/img/comment.jpg’);
+

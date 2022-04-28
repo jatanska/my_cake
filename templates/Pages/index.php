@@ -68,6 +68,7 @@ $checkConnection = function (string $name) {
     <script src="webroot/js/search.js"></script>
     <script src="webroot/js/basket.js"></script>
      <style>
+	 <!-- Quick css fixes -->
 	.view-container{ display: inline-block; float: left; width:100%; background-color: #fff; }
 	.main{ display: inline-block; float: left; width:100%; background-color: #fff; padding-bottom:40px; margin-bottom:20px; }
 	a {
@@ -79,6 +80,10 @@ $checkConnection = function (string $name) {
     color: #000;
     text-decoration: none;
 	font-size:16px;
+	}
+	.row {
+  	margin-right: 0px !important;
+  	margin-left: 0px !important;
 	}
 	</style>
 </head>
